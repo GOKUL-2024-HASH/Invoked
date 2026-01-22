@@ -1,5 +1,7 @@
 {
   "name": " Classroom Decision Support System",
   "description": "A minimal, real-time pedagogical assistant for government school teachers to get instant, actionable classroom guidance.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [
+    "microphone"
+  ]
 }

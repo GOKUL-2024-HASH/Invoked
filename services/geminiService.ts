@@ -22,8 +22,8 @@ Avoid bullets. Be extremely concise. Use clear, helpful tone.`;
 export const getPedagogicalAdvice = async (problem: string): Promise<{ data: PedagogicalGuidance, isFallback: boolean }> => {
   try {
     // Initialize inside the function to ensure we use the current environment's API key.
-    // Ensure process.env.API_KEY is available.
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || "" });
+    // Ensure process.env.API_KEY is used directly per guidelines.
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     
     const response = await ai.models.generateContent({
       // Reverting to the recommended stable model for basic text tasks
