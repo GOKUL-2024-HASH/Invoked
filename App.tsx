@@ -4,10 +4,10 @@ import { getPedagogicalAdvice } from './services/geminiService';
 import { PedagogicalGuidance, AppState } from './types';
 
 const DEMO_PROMPTS = [
-  "Students are talking loudly while I am teaching",
-  "The lesson is too fast for half the class",
-  "A student is refusing to participate",
-  "Restless energy after lunch break"
+  "Some students don’t understand subtraction and others are getting restless.",
+  "My class is noisy during group work and I’m losing control.",
+  "A few students finish early and start disturbing others.",
+  "Students look bored and are not participating in today’s lesson."
 ];
 
 const App: React.FC = () => {
@@ -67,8 +67,8 @@ const App: React.FC = () => {
 
       {/* Demo Prompts */}
       <div className="mb-6">
-        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 px-1">Try these common situations:</p>
-        <div className="flex flex-wrap gap-2">
+        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 px-1">Try these examples:</p>
+        <div className="flex flex-col gap-2">
           {DEMO_PROMPTS.map((p, i) => (
             <button
               key={i}
@@ -76,7 +76,7 @@ const App: React.FC = () => {
               disabled={status === 'LOADING'}
               className="text-left text-xs bg-white border border-gray-200 text-gray-600 px-3 py-2 rounded-lg shadow-sm hover:border-blue-300 hover:text-blue-600 transition-colors active:bg-blue-50"
             >
-              {p}
+              "{p}"
             </button>
           ))}
         </div>
@@ -107,7 +107,7 @@ const App: React.FC = () => {
 
       {/* 4. Response Section */}
       {guidance && (
-        <div className="mt-8 space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
+        <div className="mt-8 space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-12">
           
           {/* Constraint Awareness Indicators */}
           <div className="flex flex-wrap gap-2 mb-2">
@@ -193,6 +193,11 @@ const App: React.FC = () => {
                 </button>
               </div>
 
+              {/* Trust & Privacy Safeguard */}
+              <p className="mt-3 text-[10px] text-gray-400 font-medium text-center">
+                This is only to suggest the next teaching step. Responses are not stored or evaluated.
+              </p>
+
               {reflection && (
                 <div className="mt-6 w-full p-4 rounded-xl bg-blue-50 border border-blue-100 animate-in fade-in zoom-in-95 duration-300">
                   <h4 className="text-[10px] font-bold uppercase tracking-widest text-blue-500 mb-1">
@@ -212,7 +217,7 @@ const App: React.FC = () => {
       <footer className="mt-auto pt-8 pb-4 text-center">
         {status === 'FALLBACK' && (
           <p className="text-[10px] text-gray-400 font-medium uppercase tracking-wider">
-            Showing offline-approved guidance to avoid disruption.
+            Showing offline-approved guidance to avoid classroom disruption.
           </p>
         )}
       </footer>
